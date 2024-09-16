@@ -2,14 +2,16 @@ package br.com.gustavoakira.credit.application.domain
 
 import java.time.LocalDate
 
-class Customer(
+data class Customer(
     private val id: Long = 0,
     private val name: String,
     private val dateOfBirth: LocalDate,
     private val annualIncome: Double,
     private val employmentDetails: String = "",
     private val creditScore: Int = 0,
-    private val accountBalance: Double = 0.0
+    private val accountBalance: Double = 0.0,
+    private val email: String,
+    private val password: String
 ) {
 
     init {
@@ -21,6 +23,12 @@ class Customer(
         }
         require(annualIncome > 0.0) {
             "Annual income cannot be zero or negative"
+        }
+        require(email.isNotEmpty()){
+            "email cannot be empty"
+        }
+        require(password.isNotEmpty()){
+            "password cannot be empty"
         }
     }
 }

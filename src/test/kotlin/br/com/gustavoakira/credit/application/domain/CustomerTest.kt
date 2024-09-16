@@ -12,7 +12,9 @@ class CustomerTest{
             Customer(
                 name = "akira",
                 annualIncome = 100000.00,
-                dateOfBirth = LocalDate.of(2002, 11, 22)
+                dateOfBirth = LocalDate.of(2002, 11, 22),
+                email = "akiraueki2002@gmail.com",
+                password = "123"
             )
         }
     }
@@ -23,7 +25,9 @@ class CustomerTest{
            Customer(
                name = "",
                annualIncome = 100000.00,
-               dateOfBirth = LocalDate.of(2002, 11, 22)
+               dateOfBirth = LocalDate.of(2002, 11, 22),
+               email = "akiraueki2002@gmail.com",
+               password = "123"
            )
        }
     }
@@ -33,7 +37,9 @@ class CustomerTest{
             Customer(
                 name = "afsa",
                 annualIncome = -100000.00,
-                dateOfBirth = LocalDate.of(2002, 11, 22)
+                dateOfBirth = LocalDate.of(2002, 11, 22),
+                email = "akiraueki2002@gmail.com",
+                password = "123"
             )
         }
     }
@@ -44,7 +50,9 @@ class CustomerTest{
             Customer(
                 name = "afsa",
                 annualIncome = 0.0,
-                dateOfBirth = LocalDate.of(2002, 11, 22)
+                dateOfBirth = LocalDate.of(2002, 11, 22),
+                email = "akiraueki2002@gmail.com",
+                password = "123"
             )
         }
     }
@@ -55,7 +63,35 @@ class CustomerTest{
             Customer(
                 name = "afsa",
                 annualIncome = 0.0,
-                dateOfBirth = LocalDate.of(2020, 11, 22)
+                dateOfBirth = LocalDate.of(2020, 11, 22),
+                email = "akiraueki2002@gmail.com",
+                password = "123"
+            )
+        }
+    }
+
+    @Test
+    fun shouldThrowIllegalArgumentExceptionWhenCustomersEmailIsInvalid(){
+        assertThrows<IllegalArgumentException> {
+            Customer(
+                name = "afsa",
+                annualIncome = 0.0,
+                dateOfBirth = LocalDate.of(2020, 11, 22),
+                email = "",
+                password = "123"
+            )
+        }
+    }
+
+    @Test
+    fun shouldThrowIllegalArgumentExceptionWhenCustomerPasswordIsInvalid(){
+        assertThrows<IllegalArgumentException> {
+            Customer(
+                name = "afsa",
+                annualIncome = 0.0,
+                dateOfBirth = LocalDate.of(2020, 11, 22),
+                email = "akiraueki2002@gmail.com",
+                password = ""
             )
         }
     }
