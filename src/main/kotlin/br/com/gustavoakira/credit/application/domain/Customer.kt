@@ -3,15 +3,15 @@ package br.com.gustavoakira.credit.application.domain
 import java.time.LocalDate
 
 data class Customer(
-    private val id: Long = 0,
-    private val name: String,
-    private val dateOfBirth: LocalDate,
-    private val annualIncome: Double,
-    private val employmentDetails: String = "",
-    private val creditScore: Int = 0,
-    private val accountBalance: Double = 0.0,
-    private val email: String,
-    private val password: String
+     val id: Long = 0,
+     val name: String,
+     val dateOfBirth: LocalDate,
+     val annualIncome: Double,
+     val employmentDetails: String = "",
+     val creditScore: Int = 0,
+     val accountBalance: Double = 0.0,
+     val email: String,
+     val password: String
 ) {
 
     init {
@@ -31,4 +31,6 @@ data class Customer(
             "password cannot be empty"
         }
     }
+
+
 }

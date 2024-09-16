@@ -1,5 +1,6 @@
 package br.com.gustavoakira.credit.adapters.persistence.entities
 
+import br.com.gustavoakira.credit.application.domain.Customer
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -29,4 +30,33 @@ data class CustomerEntity(
     @Column()
     private val password: String
 ) {
+    companion object {
+        fun fromDomain(customer: Customer): CustomerEntity {
+            return CustomerEntity(
+                name = customer.name,
+                annualIncome = customer.annualIncome,
+                dateOfBirth = customer.dateOfBirth,
+                email = customer.email,
+                password = customer.password,
+                id = customer.id,
+                employmentDetails = customer.employmentDetails,
+                creditScore = customer.creditScore,
+                accountBalance = customer.accountBalance
+            )
+        }
+    }
+
+    fun toDomain(): Customer{
+        return Customer(
+            name = name,
+            annualIncome = annualIncome,
+            dateOfBirth = dateOfBirth,
+            email = email,
+            password = password,
+            id = id,
+            employmentDetails = employmentDetails,
+            creditScore = creditScore,
+            accountBalance = accountBalance
+        )
+    }
 }
