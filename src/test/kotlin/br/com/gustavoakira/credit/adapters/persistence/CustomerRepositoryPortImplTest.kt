@@ -5,21 +5,26 @@ import br.com.gustavoakira.credit.application.domain.Customer
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.extension.ExtendWith
 import org.junit.jupiter.api.function.Executable
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.Mockito.doNothing
+import org.mockito.junit.jupiter.MockitoExtension
 import org.mockito.stubbing.Answer
 import java.time.LocalDate
 import java.util.*
+import javax.swing.text.html.Option
 import kotlin.test.assertContentEquals
+@ExtendWith(MockitoExtension::class)
+class CustomerRepositoryPortImplTest{
 
-class CustomerRepositoryPortImplTest(
     @Mock
-    private val customerSpringDataRepository: CustomerSpringDataRepository,
+    private lateinit var customerSpringDataRepository: CustomerSpringDataRepository
+
     @InjectMocks
-    private val repository: CustomerRepositoryPortImpl
-) {
+    private lateinit var repository: CustomerRepositoryPortImpl
 
     @Test
     fun findAll() {
@@ -37,7 +42,7 @@ class CustomerRepositoryPortImplTest(
                 dateOfBirth = LocalDate.of(2002, 11, 22),
                 email = "akiraueki2002@gmail.com",
                 password = "123",
-                id = 1L,
+                id = 0L,
                 employmentDetails = "",
                 creditScore = 0,
                 accountBalance = 0.0
@@ -84,6 +89,19 @@ class CustomerRepositoryPortImplTest(
 
     @Test
     fun delete() {
+        val customerEntity: CustomerEntity = CustomerEntity(
+            name = "akira",
+            annualIncome = 100000.00,
+            dateOfBirth = LocalDate.of(2002, 11, 22),
+            email = "akiraueki2002@gmail.com",
+            password = "123",
+            id = 1L,
+            employmentDetails = "",
+            creditScore = 0,
+            accountBalance = 0.0
+        )
+        Mockito.`when`(this.customerSpringDataRepository.findById(1L)).thenReturn(Optional.of(customerEntity))
+        doNothing().`when`(customerSpringDataRepository).delete(customerEntity);
         assertDoesNotThrow(Executable { this.repository.delete(1L) })
         Mockito.verifyNoMoreInteractions(customerSpringDataRepository)
     }

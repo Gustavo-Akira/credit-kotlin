@@ -6,5 +6,5 @@ interface CustomerRepositoryPort {
     fun findAll():List<Customer>
     fun findById(id: Long):Customer
     fun save(customer: Customer) : Customer
-    fun delete(id: Long)
+    fun delete(id: Long): Unit
 }
