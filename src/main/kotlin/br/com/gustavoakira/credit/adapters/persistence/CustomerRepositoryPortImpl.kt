@@ -1,14 +1,17 @@
 package br.com.gustavoakira.credit.adapters.persistence
 
 import br.com.gustavoakira.credit.adapters.persistence.entities.CustomerEntity
+import br.com.gustavoakira.credit.adapters.persistence.specification.CustomerEntitySpecification
+import br.com.gustavoakira.credit.application.criteria.CustomerFilter
 import br.com.gustavoakira.credit.application.domain.Customer
 import br.com.gustavoakira.credit.application.ports.CustomerRepositoryPort
 
 class CustomerRepositoryPortImpl(
     private val customerSpringDataRepository: CustomerSpringDataRepository
 ) : CustomerRepositoryPort {
-    override fun findAll(): List<Customer> {
-        return customerSpringDataRepository.findAll().map {
+    override fun findAll(customerFilter: CustomerFilter): List<Customer> {
+        val customerEntitySpecification= CustomerEntitySpecification(customerFilter)
+        return customerSpringDataRepository.findAll(customerEntitySpecification).map {
             it.toDomain()
         }
     }

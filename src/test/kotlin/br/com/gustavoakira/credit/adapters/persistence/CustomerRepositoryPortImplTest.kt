@@ -1,6 +1,8 @@
 package br.com.gustavoakira.credit.adapters.persistence
 
 import br.com.gustavoakira.credit.adapters.persistence.entities.CustomerEntity
+import br.com.gustavoakira.credit.adapters.persistence.specification.CustomerEntitySpecification
+import br.com.gustavoakira.credit.application.criteria.CustomerFilter
 import br.com.gustavoakira.credit.application.domain.Customer
 import org.junit.jupiter.api.Test
 
@@ -35,7 +37,8 @@ class CustomerRepositoryPortImplTest{
             email = "akiraueki2002@gmail.com",
             password = "123"
         ))
-        Mockito.`when`(customerSpringDataRepository.findAll()).then(Answer {
+        val filter = CustomerFilter()
+        Mockito.`when`(customerSpringDataRepository.findAll(CustomerEntitySpecification(filter))).then(Answer {
             listOf(CustomerEntity(
                 name = "akira",
                 annualIncome = 100000.00,
@@ -49,7 +52,7 @@ class CustomerRepositoryPortImplTest{
             ))
         })
 
-        assertContentEquals(result,this.repository.findAll())
+        assertContentEquals(result,this.repository.findAll(filter))
         Mockito.verifyNoMoreInteractions(customerSpringDataRepository)
     }
 
