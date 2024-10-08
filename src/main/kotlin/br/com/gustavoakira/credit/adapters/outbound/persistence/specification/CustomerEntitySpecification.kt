@@ -1,6 +1,6 @@
-package br.com.gustavoakira.credit.adapters.persistence.specification
+package br.com.gustavoakira.credit.adapters.outbound.persistence.specification
 
-import br.com.gustavoakira.credit.adapters.persistence.entities.CustomerEntity
+import br.com.gustavoakira.credit.adapters.outbound.persistence.entities.CustomerEntity
 import br.com.gustavoakira.credit.application.criteria.CustomerFilter
 import jakarta.persistence.criteria.CriteriaBuilder
 import jakarta.persistence.criteria.CriteriaQuery

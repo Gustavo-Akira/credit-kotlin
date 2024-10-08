@@ -1,7 +1,7 @@
-package br.com.gustavoakira.credit.adapters.persistence
+package br.com.gustavoakira.credit.adapters.outbound.persistence
 
-import br.com.gustavoakira.credit.adapters.persistence.entities.CustomerEntity
-import br.com.gustavoakira.credit.adapters.persistence.specification.CustomerEntitySpecification
+import br.com.gustavoakira.credit.adapters.outbound.persistence.entities.CustomerEntity
+import br.com.gustavoakira.credit.adapters.outbound.persistence.specification.CustomerEntitySpecification
 import br.com.gustavoakira.credit.application.criteria.CustomerFilter
 import br.com.gustavoakira.credit.application.domain.Customer
 import br.com.gustavoakira.credit.application.ports.CustomerRepositoryPort

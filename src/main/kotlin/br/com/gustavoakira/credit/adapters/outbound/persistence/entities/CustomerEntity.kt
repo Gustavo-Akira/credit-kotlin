@@ -1,4 +1,4 @@
-package br.com.gustavoakira.credit.adapters.persistence.entities
+package br.com.gustavoakira.credit.adapters.outbound.persistence.entities
 
 import br.com.gustavoakira.credit.application.domain.Customer
 import jakarta.persistence.Column
