@@ -11,6 +11,20 @@ data class CustomerOutDTO(val id: Long = 0,
                           val creditScore: Int = 0,
                           val accountBalance: Double = 0.0,
                           val email: String){
+    fun toDomain(): Customer {
+        return Customer(
+            id=id,
+            name = name,
+            email = email,
+            creditScore = creditScore,
+            annualIncome = annualIncome,
+            password = "",
+            dateOfBirth = dateOfBirth,
+            accountBalance = accountBalance,
+            employmentDetails = employmentDetails
+        )
+    }
+
     companion object{
         fun fromDomain(customer: Customer): CustomerOutDTO{
             return CustomerOutDTO(
