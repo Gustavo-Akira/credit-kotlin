@@ -5,7 +5,9 @@ import br.com.gustavoakira.credit.adapters.outbound.persistence.specification.Cu
 import br.com.gustavoakira.credit.application.criteria.CustomerFilter
 import br.com.gustavoakira.credit.application.domain.Customer
 import br.com.gustavoakira.credit.application.ports.CustomerRepositoryPort
+import org.springframework.stereotype.Repository
 
+@Repository
 class CustomerRepositoryPortImpl(
     private val customerSpringDataRepository: CustomerSpringDataRepository
 ) : CustomerRepositoryPort {
